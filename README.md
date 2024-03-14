@@ -1,9 +1,9 @@
 # EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
- ###  DATE: 
+ ###  DATE: 07/03/2024
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT:
+###  NAME: SATHYA N
+###  ROLL NO : 212221040149
+###  DEPARTMENT: CSE
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
  
@@ -60,30 +60,62 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### PROGRAM 
 ```
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+float distance;
+void setup()
+{
+pinMode(trigpin, OUTPUT);
+pinMode(echopin, INPUT);
+pinMode(red, OUTPUT);
+pinMode(green, OUTPUT);
+Serial.begin(9600);
+}
+void loop()
+{
+digitalWrite(trigpin,LOW);
+delay(20);
+digitalWrite(trigpin,HIGH);
+delay(20);
+digitalWrite(trigpin,LOW);
+duration=pulseIn(echopin,HIGH);
+distance=duration*(0.034/2);
+Serial.print(distance);
+Serial.println("cms");
+if(distance>5)
+{
+digitalWrite(red,HIGH);
+delay(20);
+digitalWrite(red,LOW);
+delay(20);
+}
+else
+{
+digitalWrite(green,HIGH);
+delay(200);
+digitalWrite(green,HIGH);
+delay(200);
+}
+}
+
+```
+### CIRCUIT DIAGRAM :
+![image](https://github.com/Sathya-006/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/121661327/2de4b983-68cf-4280-ba21-a657976709cd)
+
+### SHEMATIC DIAGRAM :
+![Screenshot 2024-03-14 113325](https://github.com/Sathya-006/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/121661327/250c3657-9c29-4b7e-acbe-5e4883942542)
 
 
+### Distance vs measurement table :
 
+![image](https://github.com/Sathya-006/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/121661327/6e8541ce-f4ef-4735-ae3c-a32572954b4f)
 
+### GRAPH :
+![image](https://github.com/Sathya-006/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/121661327/6f46e283-388f-4416-bb35-b35588410eaa)
 
-
-
-
-
-
-`````````
-
-
-### Distance vs measurement table 
-
-			
- 
-			
-			
-			
-
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
 			
 			
 			
@@ -99,6 +131,8 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### RESULTS
+
+Thus the Error value between the actual value and measured value is calculated with the help of ultrasonic sensor.
 
 
 
